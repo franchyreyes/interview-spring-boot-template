@@ -1,5 +1,6 @@
 package com.franchy.lil.demo;
 
+import com.franchy.lil.demo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +30,11 @@ public class CustomerService {
         this.customerRepository.deleteById(customerID);
     }
 
-    public void updateCustomer(Integer customerID, Map<String, Object> customerMap) throws Exception {
+    public void updateCustomer(Integer customerID, Map<String, Object> customerMap) throws ResourceNotFoundException {
         Customer customer =
                 this.customerRepository.findById(customerID)
                         .orElseThrow(
-                                () -> new Exception("Customer not found with id " + customerID));;
+                                () -> new ResourceNotFoundException("Customer not found with id " + customerID));;
            customerMap.forEach((key, value) -> {
                switch (key) {
                    case "name":
