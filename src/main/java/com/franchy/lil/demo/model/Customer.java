@@ -1,4 +1,4 @@
-package com.franchy.lil.demo;
+package com.franchy.lil.demo.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
