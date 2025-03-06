@@ -1,12 +1,13 @@
-package com.franchy.lil.demo;
+package com.franchy.lil.demo.service;
 
 import com.franchy.lil.demo.exception.ResourceNotFoundException;
+import com.franchy.lil.demo.model.Customer;
+import com.franchy.lil.demo.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -50,4 +51,5 @@ public class CustomerService {
             });
            this.customerRepository.save(customer);
     }
+
 }

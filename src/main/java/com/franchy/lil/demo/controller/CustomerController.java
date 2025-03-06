@@ -1,8 +1,10 @@
-package com.franchy.lil.demo;
+package com.franchy.lil.demo.controller;
 
 import com.franchy.lil.demo.exception.ResourceNotFoundException;
+import com.franchy.lil.demo.model.Customer;
 import com.franchy.lil.demo.request.CustomerRequest;
 import com.franchy.lil.demo.response.ApiResponse;
+import com.franchy.lil.demo.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
