@@ -6,16 +6,29 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: mydatabase
-
     ports:
       - "5332:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+    networks:
+      - db_network
+
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/var/lib/redis/data
+    restart: unless-stopped
+    networks:
+      - db_network
 
 networks:
-  db:
+  db_network:
     driver: bridge
 
 volumes:
   postgres_data:
+  redis_data:

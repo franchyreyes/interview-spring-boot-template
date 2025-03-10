@@ -8,14 +8,8 @@ import java.util.Objects;
 @Entity(name = "Order_customer")
 public class Order {
     @Id
-    @SequenceGenerator(
-            name="order_id_sequence",
-            sequenceName="order_id_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "order_id_sequence"
+    @SequenceGenerator(name = "order_id_sequence", sequenceName = "order_id_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_sequence"
 
     )
     private Integer id;
@@ -57,7 +51,7 @@ public class Order {
         this.customer = customer;
     }
 
-    public Order(){
+    public Order() {
 
     }
 

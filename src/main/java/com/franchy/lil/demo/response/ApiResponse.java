@@ -1,9 +1,9 @@
 package com.franchy.lil.demo.response;
 
-    public class ApiResponse<T>{
-        private boolean success;
-        private String message;
-        private T data;
+public class ApiResponse<T> {
+    private boolean success;
+    private String message;
+    private T data;
 
     public ApiResponse(boolean success, String message, T data) {
         this.success = success;
