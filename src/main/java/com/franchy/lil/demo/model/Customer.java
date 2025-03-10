@@ -11,14 +11,8 @@ import java.util.Objects;
 @Entity
 public class Customer {
     @Id
-    @SequenceGenerator(
-            name="customer_id_sequence",
-            sequenceName="customer_id_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "customer_id_sequence"
+    @SequenceGenerator(name = "customer_id_sequence", sequenceName = "customer_id_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_sequence"
 
     )
     private Integer id;
@@ -27,8 +21,7 @@ public class Customer {
     private String name;
 
 
-    @Email(message = "Email should be valid",
-            regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")
+    @Email(message = "Email should be valid", regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")
     @NotBlank(message = "Email cannot be blank")
     private String email;
 
@@ -83,7 +76,8 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email, customer.email) && Objects.equals(age, customer.age);
+        return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email,
+                customer.email) && Objects.equals(age, customer.age);
     }
 
     @Override

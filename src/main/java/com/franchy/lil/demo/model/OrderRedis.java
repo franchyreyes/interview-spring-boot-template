@@ -1,11 +1,19 @@
-package com.franchy.lil.demo.dto;
+package com.franchy.lil.demo.model;
 
-public class OrderDTO {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
+import java.io.Serializable;
+
+@RedisHash("Order")
+public class OrderRedis implements Serializable {
+
+    @Id
     private String orderNumber;
     private String customerName;
     private String customerEmail;
 
-    public OrderDTO(String orderNumber, String customerName, String customerEmail) {
+    public OrderRedis(String orderNumber, String customerName, String customerEmail) {
         this.orderNumber = orderNumber;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -35,12 +43,12 @@ public class OrderDTO {
         this.customerEmail = customerEmail;
     }
 
-    public OrderDTO() {
+    public OrderRedis() {
     }
 
     @Override
     public String toString() {
-        return "OrderDTO{" + "orderNumber='" + orderNumber + '\'' + ", customerName='" + customerName + '\'' + ", " +
+        return "OrderRedis{" + "orderNumber='" + orderNumber + '\'' + ", customerName='" + customerName + '\'' + ", " +
                 "customerEmail='" + customerEmail + '\'' + '}';
     }
 }

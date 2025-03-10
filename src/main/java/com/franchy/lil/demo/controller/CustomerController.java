@@ -21,17 +21,17 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService){
+    public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @GetMapping()
-    public List<Customer> getCustmers(){
+    public List<Customer> getCustmers() {
         return this.customerService.getAllCustomer();
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse<Customer>> saveCustomer(@Valid @RequestBody CustomerRequest customerRequest){
+    public ResponseEntity<ApiResponse<Customer>> saveCustomer(@Valid @RequestBody CustomerRequest customerRequest) {
         Customer customer = new Customer();
         customer.setName(customerRequest.name());
         customer.setEmail(customerRequest.email());
@@ -44,15 +44,13 @@ public class CustomerController {
     }
 
     @DeleteMapping("{customerID}")
-    public void deleteCustomer(@PathVariable("customerID") Integer customerID){
+    public void deleteCustomer(@PathVariable("customerID") Integer customerID) {
         this.customerService.deleteCustomer(customerID);
     }
 
     @PutMapping("{customerID}")
-    public void updateCustomer(
-            @PathVariable("customerID") Integer customerID,
-            @RequestBody Map<String, Object> customerMap
-            ) throws ResourceNotFoundException {
+    public void updateCustomer(@PathVariable("customerID") Integer customerID,
+                               @RequestBody Map<String, Object> customerMap) throws ResourceNotFoundException {
         this.customerService.updateCustomer(customerID, customerMap);
     }
 }

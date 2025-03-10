@@ -19,8 +19,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidationExceptions(MethodArgumentNotValidException ex, WebRequest request) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error ->
-                errors.put(error.getField(), error.getDefaultMessage()));
+        ex.getBindingResult().getFieldErrors().forEach(error -> errors.put(error.getField(),
+                error.getDefaultMessage()));
         ApiResponse<Map<String, String>> response = new ApiResponse<>(false, "Validation failed", errors);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
@@ -28,10 +28,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<?> handleConstraintViolationExceptions(ConstraintViolationException ex, WebRequest request) {
         Map<String, String> errors = new HashMap<>();
-        ex.getConstraintViolations().forEach(violation ->
-                errors.put(violation.getPropertyPath().toString(), violation.getMessage()));
-            ApiResponse<Map<String, String>> response = new ApiResponse<>(false, "Validation failed", errors);
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        ex.getConstraintViolations().forEach(violation -> errors.put(violation.getPropertyPath().toString(),
+                violation.getMessage()));
+        ApiResponse<Map<String, String>> response = new ApiResponse<>(false, "Validation failed", errors);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
