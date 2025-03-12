@@ -1,0 +1,10 @@
+logging:
+  level:
+    root: INFO
+    com.franchy.lil.demo: INFO
+  file:
+    name: logs/spring-boot-application-prod.log
+spring:
+  config:
+    activate:
+      on-profile: prod
