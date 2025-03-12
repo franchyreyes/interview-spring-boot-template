@@ -29,6 +29,16 @@ public class Customer {
     @Min(value = 0, message = "Age should not be less than 0")
     private Integer age;
 
+    private Boolean active;
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -61,11 +71,12 @@ public class Customer {
         this.age = age;
     }
 
-    public Customer(Integer id, String name, String email, Integer age) {
+    public Customer(Integer id, String name, String email, Integer age, Boolean active) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
+        this.active = active;
     }
 
     public Customer() {
@@ -76,17 +87,16 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email,
-                customer.email) && Objects.equals(age, customer.age);
+        return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email, customer.email) && Objects.equals(age, customer.age) && Objects.equals(active, customer.active);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, age);
+        return Objects.hash(id, name, email, age, active);
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\'' + ", age=" + age + '}';
+        return "Customer{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\'' + ", age=" + age + ", active=" + active + '}';
     }
 }
