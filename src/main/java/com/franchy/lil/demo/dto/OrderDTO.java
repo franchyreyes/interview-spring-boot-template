@@ -1,8 +1,13 @@
 package com.franchy.lil.demo.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class OrderDTO {
+    @Schema(example = "50")
     private String orderNumber;
+    @Schema(example = "Franchy")
     private String customerName;
+    @Schema(example = "Franchy@example.com")
     private String customerEmail;
 
     public OrderDTO(String orderNumber, String customerName, String customerEmail) {
