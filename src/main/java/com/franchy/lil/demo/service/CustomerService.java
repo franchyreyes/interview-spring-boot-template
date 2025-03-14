@@ -50,10 +50,11 @@ public class CustomerService {
         Customer customer = this.customerRepository.findById(customerID)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + customerID));
         customer.setActive(false);
+        this.customerRepository.save(customer);
         logger.debug("Customer deleted successfully");
     }
 
-    public void updateCustomer(Integer customerID, Map<String, Object> customerMap) throws ResourceNotFoundException {
+    public Customer updateCustomer(Integer customerID, Map<String, Object> customerMap) throws ResourceNotFoundException {
         logger.debug("Updating customer with ID: {}", customerID);
         Customer customer = this.customerRepository.findById(customerID)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + customerID));
@@ -75,7 +76,8 @@ public class CustomerService {
             }
         });
 
-        this.customerRepository.save(customer);
         logger.debug("Customer updated successfully: {}", customer);
+        return this.customerRepository.save(customer);
+
     }
 }

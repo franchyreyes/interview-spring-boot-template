@@ -1,5 +1,15 @@
 package com.franchy.lil.demo.request;
 
-public record CustomerRequest(String name, String email, Integer age) {
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record CustomerRequest(
+        @Schema(example = "John Doe")
+        String name,
+
+        @Schema(example = "john.doe@example.com")
+        String email,
+
+        @Schema(example = "30")
+        Integer age) {
 
 }
