@@ -95,7 +95,7 @@ public class OrderController {
 
         logger.debug("Cache miss for key: {}", key);
         List<Order> orders = this.orderService.getAllOrder();
-        List<OrderDTO> ordersDTO = OrderMapper.INSTANCE.orderToOrderDTOList(orders);
+        List<OrderDTO> ordersDTO = OrderMapper.INSTANCE.toDTO(orders);
         List<OrderRedis> ordersRedis = OrderMapper.INSTANCE.orderDTOListToOrderRedisList(ordersDTO);
         if (!orders.isEmpty()) {
             this.orderRedisService.save(key, ordersRedis);

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    List<Customer> findByActiveTrue();
+    List<Customer> findByActive(boolean active);
 
     List<Customer> findByActiveTrueAndAgeGreaterThanEqual(int age);
 }

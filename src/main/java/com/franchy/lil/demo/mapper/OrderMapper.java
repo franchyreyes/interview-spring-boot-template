@@ -18,9 +18,9 @@ public interface OrderMapper {
     OrderDTO toDTO(Order order);
 
 
-    OrderDTO orderRedisToOrderDTO(OrderRedis orderRedis);
+    OrderDTO toDTO(OrderRedis orderRedis);
 
-    List<OrderDTO> orderToOrderDTOList(List<Order> orders);
+    List<OrderDTO> toDTO(List<Order> orders);
 
     List<OrderRedis> orderDTOListToOrderRedisList(List<OrderDTO> orders);
 
