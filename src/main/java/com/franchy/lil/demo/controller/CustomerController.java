@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public class CustomerController {
     }
 
 
-    @Operation(summary = "Get all active customers")
+    @Operation(summary = "Retrieve customers by active status", description = "Retrieve a list of customers filtered by their active status.")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Found the customers",
                     content = { @Content(mediaType = "application/json",
@@ -50,9 +51,16 @@ public class CustomerController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "Customers not found",
                     content = @Content) })
     @GetMapping("/active")
-    public ResponseEntity<ApiResponse<List<CustomerDTO>>> getCustmers() {
-        logger.debug("Retrieving all active customers");
-        List<Customer> customers = this.customerService.getAllCustomer();
+    public ResponseEntity<ApiResponse<List<CustomerDTO>>> getCustmers(
+            @Parameter(description = "Active status of the customers to be retrieved")
+            @RequestParam(value = "active") Boolean active) {
+        logger.debug("Retrieving customers with active status: {}", active);
+        List<Customer> customers = new ArrayList<>();
+
+        if (active != null) {
+            customers = this.customerService.findCustomerByActive(active);
+        }
+
         logger.debug("Retrieved {} customers", customers.size());
         List<CustomerDTO> customersDTO = CustomerMapper.INSTANCE.toDTO(customers);
         ApiResponse<List<CustomerDTO>> response = new ApiResponse<>(true, "Retrieving all customers", customersDTO);

@@ -25,10 +25,10 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> getAllCustomer() {
-        logger.debug("Retrieving all active customers");
-        List<Customer> customers = this.customerRepository.findByActiveTrue();
-        logger.debug("Retrieved {} active customers", customers.size());
+    public List<Customer> findCustomerByActive(boolean active) {
+        logger.debug("Retrieved active = {} customers", active);
+        List<Customer> customers = this.customerRepository.findByActive(active);
+        logger.debug("Retrieved {} active={} customers", customers.size(), active);
         return customers;
     }
 
