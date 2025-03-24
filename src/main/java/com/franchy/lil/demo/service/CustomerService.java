@@ -2,13 +2,11 @@ package com.franchy.lil.demo.service;
 
 import com.franchy.lil.demo.exception.ResourceNotFoundException;
 import com.franchy.lil.demo.model.Customer;
-import com.franchy.lil.demo.model.Order;
 import com.franchy.lil.demo.repository.jpa.CustomerRepository;
-import com.franchy.lil.demo.response.ApiResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -47,8 +45,9 @@ public class CustomerService {
 
     public void deleteCustomer(Integer customerID) {
         logger.debug("Deleting customer with ID: {}", customerID);
-        Customer customer = this.customerRepository.findById(customerID)
-                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + customerID));
+        Customer customer =
+                this.customerRepository.findById(customerID).orElseThrow(() -> new ResourceNotFoundException(
+                        "Customer not found with id " + customerID));
         customer.setActive(false);
         this.customerRepository.save(customer);
         logger.debug("Customer deleted successfully");
@@ -56,8 +55,9 @@ public class CustomerService {
 
     public Customer updateCustomer(Integer customerID, Map<String, Object> customerMap) throws ResourceNotFoundException {
         logger.debug("Updating customer with ID: {}", customerID);
-        Customer customer = this.customerRepository.findById(customerID)
-                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + customerID));
+        Customer customer =
+                this.customerRepository.findById(customerID).orElseThrow(() -> new ResourceNotFoundException(
+                        "Customer not found with id " + customerID));
 
         customerMap.forEach((key, value) -> {
             switch (key) {

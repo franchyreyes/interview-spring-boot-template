@@ -1,11 +1,11 @@
 package com.franchy.lil.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 @EnableRedisRepositories(basePackages = "com.franchy.lil.demo.repository.redis")
