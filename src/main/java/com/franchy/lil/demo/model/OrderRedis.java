@@ -48,7 +48,6 @@ public class OrderRedis implements Serializable {
 
     @Override
     public String toString() {
-        return "OrderRedis{" + "orderNumber='" + orderNumber + '\'' + ", customerName='" + customerName + '\'' + ", " +
-                "customerEmail='" + customerEmail + '\'' + '}';
+        return "OrderRedis{" + "orderNumber='" + orderNumber + '\'' + ", customerName='" + customerName + '\'' + ", " + "customerEmail='" + customerEmail + '\'' + '}';
     }
 }

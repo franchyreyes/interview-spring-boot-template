@@ -5,10 +5,10 @@ import com.franchy.lil.demo.model.Order;
 import com.franchy.lil.demo.model.OrderRedis;
 import com.franchy.lil.demo.repository.jpa.CustomerRepository;
 import com.franchy.lil.demo.repository.jpa.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

@@ -1,9 +1,7 @@
 package com.franchy.lil.demo.mapper;
 
 import com.franchy.lil.demo.dto.CustomerDTO;
-import com.franchy.lil.demo.dto.OrderDTO;
 import com.franchy.lil.demo.model.Customer;
-import com.franchy.lil.demo.model.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

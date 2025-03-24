@@ -45,7 +45,6 @@ public class OrderDTO {
 
     @Override
     public String toString() {
-        return "OrderDTO{" + "orderNumber='" + orderNumber + '\'' + ", customerName='" + customerName + '\'' + ", " +
-                "customerEmail='" + customerEmail + '\'' + '}';
+        return "OrderDTO{" + "orderNumber='" + orderNumber + '\'' + ", customerName='" + customerName + '\'' + ", " + "customerEmail='" + customerEmail + '\'' + '}';
     }
 }
