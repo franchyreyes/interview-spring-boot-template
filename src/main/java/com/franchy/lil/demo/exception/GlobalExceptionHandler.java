@@ -1,6 +1,6 @@
 package com.franchy.lil.demo.exception;
 
-import com.franchy.lil.demo.response.ApiResponse;
+import com.franchy.lil.demo.response.ApiResponses;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getFieldErrors().forEach(error -> errors.put(error.getField(),
                 error.getDefaultMessage()));
-        ApiResponse<Map<String, String>> response = new ApiResponse<>(false, "Validation failed", errors);
+        ApiResponses<Map<String, String>> response = new ApiResponses<>(false, "Validation failed", errors);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
@@ -33,21 +33,21 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         ex.getConstraintViolations().forEach(violation -> errors.put(violation.getPropertyPath().toString(),
                 violation.getMessage()));
-        ApiResponse<Map<String, String>> response = new ApiResponse<>(false, "Validation failed", errors);
+        ApiResponses<Map<String, String>> response = new ApiResponses<>(false, "Validation failed", errors);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public ResponseEntity<?> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
-        ApiResponse<String> response = new ApiResponse<>(false, "Method not allowed", null);
+        ApiResponses<String> response = new ApiResponses<>(false, "Method not allowed", null);
         return new ResponseEntity<>(response, HttpStatus.METHOD_NOT_ALLOWED);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException ex) {
-        ApiResponse<String> response = new ApiResponse<>(false, ex.getMessage(), null);
+        ApiResponses<String> response = new ApiResponses<>(false, ex.getMessage(), null);
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 }
