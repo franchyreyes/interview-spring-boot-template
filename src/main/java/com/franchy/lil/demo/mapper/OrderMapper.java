@@ -1,6 +1,7 @@
 package com.franchy.lil.demo.mapper;
 
 import com.franchy.lil.demo.dto.OrderDTO;
+import com.franchy.lil.demo.dto.OrderNumberDTO;
 import com.franchy.lil.demo.model.Order;
 import com.franchy.lil.demo.model.OrderRedis;
 import org.mapstruct.Mapper;
@@ -18,6 +19,9 @@ public interface OrderMapper {
     OrderDTO toDTO(Order order);
 
 
+
+    @Mapping(source = "orderNumber", target = "orderNumber")
+    OrderNumberDTO toOrderNumberDTO(Order order);
     OrderDTO toDTO(OrderRedis orderRedis);
 
     List<OrderDTO> toDTO(List<Order> orders);
