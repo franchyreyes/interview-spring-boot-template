@@ -14,7 +14,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -30,5 +30,8 @@ server:
 redis:
   host: localhost
   port: 6379
+
+secret:
+  key: ${SECRET_KEY}
 
 

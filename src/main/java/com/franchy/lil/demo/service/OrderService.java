@@ -39,7 +39,7 @@ public class OrderService {
             logger.debug("Order added successfully: {}", savedOrder);
             return savedOrder;
         }
-        logger.error("Customer not found for order: {}", order);
+        logger.debug("Customer not found for order: {}", order);
         throw new ResourceNotFoundException("Customer not found");
     }
 

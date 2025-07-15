@@ -1,15 +1,14 @@
 package com.franchy.lil.demo.repository.jpa;
 
-import com.franchy.lil.demo.model.Customer;
+import com.franchy.lil.demo.model.CustomerModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+public interface CustomerRepository extends JpaRepository<CustomerModel, Integer> {
 
-    List<Customer> findByActive(boolean active);
+    List<CustomerModel> findByActive(boolean active);
 
-    List<Customer> findByActiveTrueAndAgeGreaterThanEqual(int age);
+    List<CustomerModel> findByActiveTrueAndAgeGreaterThanEqual(int age);
 }

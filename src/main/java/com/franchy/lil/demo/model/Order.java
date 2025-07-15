@@ -18,7 +18,7 @@ public class Order {
     private String orderNumber;
 
     @ManyToOne
-    private Customer customer;
+    private CustomerModel customer;
 
 
     public Integer getId() {
@@ -37,15 +37,15 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public Customer getCustomer() {
+    public CustomerModel getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomerModel customer) {
         this.customer = customer;
     }
 
-    public Order(Integer id, String orderNumber, Customer customer) {
+    public Order(Integer id, String orderNumber, CustomerModel customer) {
         this.id = id;
         this.orderNumber = orderNumber;
         this.customer = customer;

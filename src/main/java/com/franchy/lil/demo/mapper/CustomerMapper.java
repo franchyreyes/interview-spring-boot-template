@@ -1,7 +1,8 @@
 package com.franchy.lil.demo.mapper;
 
+import com.franchy.lil.demo.domain.Customer;
 import com.franchy.lil.demo.dto.CustomerDTO;
-import com.franchy.lil.demo.model.Customer;
+import com.franchy.lil.demo.model.CustomerModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -15,4 +16,8 @@ public interface CustomerMapper {
     List<CustomerDTO> toDTO(List<Customer> customers);
 
     CustomerDTO toDTO(Customer customer);
+
+    Customer toDomain(CustomerModel customer);
+
+    CustomerModel toModel(Customer customer);
 }

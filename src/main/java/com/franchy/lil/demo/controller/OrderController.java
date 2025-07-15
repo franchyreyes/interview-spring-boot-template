@@ -1,8 +1,9 @@
 package com.franchy.lil.demo.controller;
 
 import com.franchy.lil.demo.dto.OrderDTO;
+import com.franchy.lil.demo.dto.OrderNumberDTO;
 import com.franchy.lil.demo.mapper.OrderMapper;
-import com.franchy.lil.demo.model.Customer;
+import com.franchy.lil.demo.model.CustomerModel;
 import com.franchy.lil.demo.model.Order;
 import com.franchy.lil.demo.model.OrderRedis;
 import com.franchy.lil.demo.request.OrderRequest;
@@ -50,18 +51,21 @@ public class OrderController {
     )
     @PostMapping
     @Transactional
-    public ResponseEntity<ApiResponses<OrderDTO>> saveOrder(@RequestBody OrderRequest orderRequest) {
+    public ResponseEntity<ApiResponses<OrderNumberDTO>> saveOrder(@RequestBody OrderRequest orderRequest) {
         logger.debug("Saving order with request: {}", orderRequest);
 
         Order order = new Order();
         order.setOrderNumber(orderRequest.orderNumber());
-        Customer customer = new Customer();
+        CustomerModel customer = new CustomerModel();
         customer.setId(orderRequest.customerID());
         order.setCustomer(customer);
 
         Order saveOrder = this.orderService.addOrder(order);
-        OrderDTO orderDTO = OrderMapper.INSTANCE.toDTO(saveOrder);
-        ApiResponses<OrderDTO> response = new ApiResponses<>(true, "Resource created successfully", orderDTO);
+        OrderNumberDTO orderNumberDTO = OrderMapper.INSTANCE.toOrderNumberDTO(saveOrder);
+        ApiResponses<OrderNumberDTO> response = new ApiResponses<>
+                (true,
+                        "Resource created successfully",
+                        orderNumberDTO);
         logger.debug("Order saved successfully: {}", saveOrder);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
