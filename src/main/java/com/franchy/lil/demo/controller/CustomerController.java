@@ -1,9 +1,9 @@
 package com.franchy.lil.demo.controller;
 
+import com.franchy.lil.demo.domain.Customer;
 import com.franchy.lil.demo.dto.CustomerDTO;
 import com.franchy.lil.demo.exception.ResourceNotFoundException;
 import com.franchy.lil.demo.mapper.CustomerMapper;
-import com.franchy.lil.demo.model.Customer;
 import com.franchy.lil.demo.request.CustomerRequest;
 import com.franchy.lil.demo.response.ApiResponses;
 import com.franchy.lil.demo.service.CustomerService;
@@ -49,7 +49,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "404", description = "Customers not " +
                     "found", content = @Content)})
     @GetMapping("/active")
-    public ResponseEntity<ApiResponses<List<CustomerDTO>>> getCustmers(@Parameter(description = "Active status of the " +
+    public ResponseEntity<ApiResponses<List<CustomerDTO>>> getCustomers(@Parameter(description = "Active status of the " +
             "customers to be retrieved") @RequestParam(value = "active") Boolean active) {
         logger.debug("Retrieving customers with active status: {}", active);
         List<Customer> customers = new ArrayList<>();
@@ -74,7 +74,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "404", description = "Customers not " +
                     "found", content = @Content)})
     @GetMapping("/active/adults")
-    public ResponseEntity<ApiResponses<List<CustomerDTO>>> getCustmersActiveAndAdult() {
+    public ResponseEntity<ApiResponses<List<CustomerDTO>>> getCustomersActiveAndAdult() {
         logger.debug("Retrieving all customers");
         List<Customer> customers = this.customerService.getAllActiveAndAdultCustomer();
         logger.debug("Retrieved {} customers", customers.size());
@@ -98,7 +98,7 @@ public class CustomerController {
         customer.setEmail(customerRequest.email());
         customer.setAge(customerRequest.age());
         customer.setActive(true);
-        this.customerService.saveCustomer(customer);
+        customer = this.customerService.saveCustomer(customer);
         CustomerDTO customerDTO = CustomerMapper.INSTANCE.toDTO(customer);
         ApiResponses<CustomerDTO> response = new ApiResponses<>(true, "Resource created successfully", customerDTO);
         logger.debug("Customer saved successfully: {}", customerDTO);

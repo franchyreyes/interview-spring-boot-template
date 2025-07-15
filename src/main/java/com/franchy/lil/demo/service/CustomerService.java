@@ -1,7 +1,7 @@
 package com.franchy.lil.demo.service;
 
+import com.franchy.lil.demo.domain.Customer;
 import com.franchy.lil.demo.exception.ResourceNotFoundException;
-import com.franchy.lil.demo.model.Customer;
 import com.franchy.lil.demo.repository.specification.CustomerSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +16,9 @@ import java.util.Map;
 public class CustomerService {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerService.class);
-
-    @Autowired
     private final CustomerSpecification customerAdapter;
 
-    public CustomerService(@Qualifier("jpaCustomerRepositoryAdapter") CustomerSpecification customerAdapter) {
+    public CustomerService(@Qualifier("customerMemoryAdapterRepo") CustomerSpecification customerAdapter) {
         this.customerAdapter = customerAdapter;
     }
 
@@ -38,10 +36,9 @@ public class CustomerService {
         return customers;
     }
 
-    public void saveCustomer(Customer customer) {
+    public Customer saveCustomer(Customer customer) {
         logger.debug("Saving customer: {}", customer);
-        this.customerAdapter.save(customer);
-        logger.debug("Customer saved successfully");
+        return this.customerAdapter.save(customer);
     }
 
     public void deleteCustomer(Integer customerID) {

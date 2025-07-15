@@ -3,7 +3,7 @@ package com.franchy.lil.demo.controller;
 import com.franchy.lil.demo.dto.OrderDTO;
 import com.franchy.lil.demo.dto.OrderNumberDTO;
 import com.franchy.lil.demo.mapper.OrderMapper;
-import com.franchy.lil.demo.model.Customer;
+import com.franchy.lil.demo.model.CustomerModel;
 import com.franchy.lil.demo.model.Order;
 import com.franchy.lil.demo.model.OrderRedis;
 import com.franchy.lil.demo.request.OrderRequest;
@@ -56,7 +56,7 @@ public class OrderController {
 
         Order order = new Order();
         order.setOrderNumber(orderRequest.orderNumber());
-        Customer customer = new Customer();
+        CustomerModel customer = new CustomerModel();
         customer.setId(orderRequest.customerID());
         order.setCustomer(customer);
 

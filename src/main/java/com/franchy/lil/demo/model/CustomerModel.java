@@ -8,8 +8,8 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
-@Entity
-public class Customer {
+@Entity(name = "customer")
+public class CustomerModel {
     @Id
     @SequenceGenerator(name = "customer_id_sequence", sequenceName = "customer_id_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_sequence"
@@ -71,7 +71,7 @@ public class Customer {
         this.age = age;
     }
 
-    public Customer(Integer id, String name, String email, Integer age, Boolean active) {
+    public CustomerModel(Integer id, String name, String email, Integer age, Boolean active) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -79,14 +79,14 @@ public class Customer {
         this.active = active;
     }
 
-    public Customer() {
+    public CustomerModel() {
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
+        CustomerModel customer = (CustomerModel) o;
         return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email,
                 customer.email) && Objects.equals(age, customer.age) && Objects.equals(active, customer.active);
     }
