@@ -5,12 +5,14 @@ import com.franchy.lil.demo.mapper.CustomerMapper;
 import com.franchy.lil.demo.model.CustomerModel;
 import com.franchy.lil.demo.repository.memory.CustomerMemory;
 import com.franchy.lil.demo.repository.specification.CustomerSpecification;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository("customerMemoryAdapterRepo")
+@Profile("dev")
 public class CustomerMemoryAdapter implements CustomerSpecification {
 
     private final CustomerMemory customerMemory;

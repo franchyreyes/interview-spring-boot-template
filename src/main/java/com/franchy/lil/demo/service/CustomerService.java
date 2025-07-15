@@ -18,7 +18,8 @@ public class CustomerService {
     private static final Logger logger = LoggerFactory.getLogger(CustomerService.class);
     private final CustomerSpecification customerAdapter;
 
-    public CustomerService(@Qualifier("customerMemoryAdapterRepo") CustomerSpecification customerAdapter) {
+    @Autowired
+    public CustomerService(CustomerSpecification customerAdapter) {
         this.customerAdapter = customerAdapter;
     }
 
