@@ -1,24 +1,15 @@
-package com.franchy.lil.demo.model;
+package com.franchy.lil.demo.domain;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import com.franchy.lil.demo.model.CustomerModel;
 
 import java.util.Objects;
 
-@Entity(name = "Order_customer")
 public class Order {
-    @Id
-    @SequenceGenerator(name = "order_id_sequence", sequenceName = "order_id_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_sequence"
 
-    )
     private Integer id;
-
-    @NotBlank(message = "orderNumber cannot be blank")
     private String orderNumber;
 
-    @ManyToOne
-    private CustomerModel customer;
+    private Customer customer;
 
 
     public Integer getId() {
@@ -37,15 +28,15 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public CustomerModel getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(CustomerModel customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-    public Order(Integer id, String orderNumber, CustomerModel customer) {
+    public Order(Integer id, String orderNumber, Customer customer) {
         this.id = id;
         this.orderNumber = orderNumber;
         this.customer = customer;

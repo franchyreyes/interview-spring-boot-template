@@ -9,7 +9,6 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 
 @SpringBootApplication
 @EnableRedisRepositories(basePackages = "com.franchy.lil.demo.repository.redis")
-@EnableJpaRepositories(basePackages = "com.franchy.lil.demo.repository.jpa")
 public class DemoApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);

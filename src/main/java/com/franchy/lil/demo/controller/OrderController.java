@@ -1,10 +1,12 @@
 package com.franchy.lil.demo.controller;
 
+import com.franchy.lil.demo.domain.Customer;
+import com.franchy.lil.demo.domain.Order;
 import com.franchy.lil.demo.dto.OrderDTO;
 import com.franchy.lil.demo.dto.OrderNumberDTO;
 import com.franchy.lil.demo.mapper.OrderMapper;
 import com.franchy.lil.demo.model.CustomerModel;
-import com.franchy.lil.demo.model.Order;
+import com.franchy.lil.demo.model.OrderModel;
 import com.franchy.lil.demo.model.OrderRedis;
 import com.franchy.lil.demo.request.OrderRequest;
 import com.franchy.lil.demo.response.ApiResponses;
@@ -56,7 +58,7 @@ public class OrderController {
 
         Order order = new Order();
         order.setOrderNumber(orderRequest.orderNumber());
-        CustomerModel customer = new CustomerModel();
+        Customer customer = new Customer();
         customer.setId(orderRequest.customerID());
         order.setCustomer(customer);
 
@@ -92,7 +94,7 @@ public class OrderController {
         logger.debug("Cache miss for key: {}", key);
         List<Order> orders = this.orderService.getAllOrder();
         List<OrderDTO> ordersDTO = OrderMapper.INSTANCE.toDTO(orders);
-        List<OrderRedis> ordersRedis = OrderMapper.INSTANCE.orderDTOListToOrderRedisList(ordersDTO);
+        List<OrderRedis> ordersRedis = OrderMapper.INSTANCE.toOrderRedis(ordersDTO);
         if (!orders.isEmpty()) {
             this.orderRedisService.save(key, ordersRedis);
             logger.debug("Orders saved to cache with key: {}", key);

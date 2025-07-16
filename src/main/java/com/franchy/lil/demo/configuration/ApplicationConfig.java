@@ -2,6 +2,7 @@ package com.franchy.lil.demo.configuration;
 
 import com.franchy.lil.demo.repository.jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@ConditionalOnProperty(name = "security.web.enabled", havingValue = "true", matchIfMissing = true)
 public class ApplicationConfig {
 
     @Autowired
