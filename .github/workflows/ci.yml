@@ -37,6 +37,9 @@ jobs:
       - name: Wait for services to be ready
         run: sleep 10
 
+      - name: Build project
+        run: mvn clean install -DskipTests
+
       - name: Run tests
         run: mvn test
 
