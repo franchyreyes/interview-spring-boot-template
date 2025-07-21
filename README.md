@@ -26,6 +26,7 @@ This project is a comprehensive Spring Boot application designed to demonstrate 
 - API documentation with OpenAPI 3.0.
 - PostgreSQL
 - Spring Profiles
+- DDD architecture (Adapters)
 
 ## Project Structure
 
@@ -41,6 +42,8 @@ This project is a comprehensive Spring Boot application designed to demonstrate 
 
 2. **Install Docker**: Follow the instructions on the Docker website to install Docker on your machine.
 
+   [Visit Docker](https://www.docker.com/)
+
 3. You have two options regarding the Docker process related to the Dockerfile and docker-compose files:
 
     - 1 - If you only use the Docker Compose file, you will need to install Java 17 or above on your machine and then run the docker-compose file, which includes the use of PostgreSQL and Redis.
@@ -50,6 +53,20 @@ This project is a comprehensive Spring Boot application designed to demonstrate 
    ```bash
     docker compose -f docker-compose.yml -p demo up -d 
    ```
+   
+4. Add secret key value.
+
+   ```bash
+    export SECRET_KEY=anyvalueyouwant 
+   ```
+   
+5. You have two profiles: dev and prod. by default, [dev] profile is running a Memory Adapter and [prod] profile is running a JPA Adapter.
+```bash
+      application.yml File
+      profiles:
+         active: dev 
+   ```
+
 
 ## API Documentation
 Access the OpenAPI documentation at `http://localhost:3000/swagger-ui/index.html`

@@ -5,12 +5,14 @@ import com.franchy.lil.demo.model.User;
 import com.franchy.lil.demo.repository.jpa.UserRepository;
 import com.franchy.lil.demo.request.AuthenticationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile("prod")
 public class AuthenticationService {
 
     @Autowired

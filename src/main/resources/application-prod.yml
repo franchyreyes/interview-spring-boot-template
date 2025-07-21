@@ -5,6 +5,26 @@ logging:
   file:
     name: logs/spring-boot-application-prod.log
 spring:
+  datasource:
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: HikariPool-1
+      max-lifetime: 2000000
+      connection-timeout: 30000
+    url: jdbc:postgresql://localhost:5332/mydatabase
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
   config:
     activate:
       on-profile: prod

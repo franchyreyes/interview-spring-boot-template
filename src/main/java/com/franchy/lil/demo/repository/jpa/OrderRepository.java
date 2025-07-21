@@ -1,9 +1,9 @@
 package com.franchy.lil.demo.repository.jpa;
 
-import com.franchy.lil.demo.model.Order;
+import com.franchy.lil.demo.model.OrderModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface OrderRepository extends JpaRepository<Order, Integer> {
+
+public interface OrderRepository extends JpaRepository<OrderModel, Integer> {
 }

@@ -1,3 +1,6 @@
+security:
+  web:
+    enabled: false
 logging:
   level:
     root: INFO
@@ -5,6 +8,13 @@ logging:
   file:
     name: logs/spring-boot-application-dev.log
 spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  security:
+    web:
+      enabled: false
   config:
     activate:
       on-profile: dev
