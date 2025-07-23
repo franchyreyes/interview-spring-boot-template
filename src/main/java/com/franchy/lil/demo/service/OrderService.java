@@ -3,12 +3,8 @@ package com.franchy.lil.demo.service;
 import com.franchy.lil.demo.domain.Customer;
 import com.franchy.lil.demo.domain.Order;
 import com.franchy.lil.demo.exception.ResourceNotFoundException;
-import com.franchy.lil.demo.model.OrderModel;
-import com.franchy.lil.demo.model.OrderRedis;
-import com.franchy.lil.demo.repository.jpa.CustomerRepository;
-import com.franchy.lil.demo.repository.jpa.OrderRepository;
-import com.franchy.lil.demo.repository.specification.CustomerSpecification;
-import com.franchy.lil.demo.repository.specification.OrderSpecification;
+import com.franchy.lil.demo.repository.port.CustomerPort;
+import com.franchy.lil.demo.repository.port.OrderPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +18,11 @@ public class OrderService {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
-    private final OrderSpecification orderAdapter;
-    private final CustomerSpecification customerAdapter;
+    private final OrderPort orderAdapter;
+    private final CustomerPort customerAdapter;
 
     @Autowired
-    public OrderService(OrderSpecification orderAdapter, CustomerSpecification customerAdapter) {
+    public OrderService(OrderPort orderAdapter, CustomerPort customerAdapter) {
         this.orderAdapter = orderAdapter;
         this.customerAdapter = customerAdapter;
     }

@@ -2,11 +2,10 @@ package com.franchy.lil.demo.service;
 
 import com.franchy.lil.demo.domain.Customer;
 import com.franchy.lil.demo.exception.ResourceNotFoundException;
-import com.franchy.lil.demo.repository.specification.CustomerSpecification;
+import com.franchy.lil.demo.repository.port.CustomerPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +15,10 @@ import java.util.Map;
 public class CustomerService {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerService.class);
-    private final CustomerSpecification customerAdapter;
+    private final CustomerPort customerAdapter;
 
     @Autowired
-    public CustomerService(CustomerSpecification customerAdapter) {
+    public CustomerService(CustomerPort customerAdapter) {
         this.customerAdapter = customerAdapter;
     }
 

@@ -4,7 +4,7 @@ import com.franchy.lil.demo.domain.Order;
 import com.franchy.lil.demo.mapper.OrderMapper;
 import com.franchy.lil.demo.model.OrderModel;
 import com.franchy.lil.demo.repository.jpa.OrderRepository;
-import com.franchy.lil.demo.repository.specification.OrderSpecification;
+import com.franchy.lil.demo.repository.port.OrderPort;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository("jpaOrderRepositoryAdapter")
 @Profile("prod")
-public class JpaOrderRepositoryAdapter implements OrderSpecification {
+public class JpaOrderRepositoryAdapter implements OrderPort {
 
     private final OrderRepository orderRepository;
 

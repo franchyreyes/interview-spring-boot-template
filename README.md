@@ -26,7 +26,7 @@ This project is a comprehensive Spring Boot application designed to demonstrate 
 - API documentation with OpenAPI 3.0.
 - PostgreSQL
 - Spring Profiles
-- DDD architecture (Adapters)
+- DDD architecture (Adapters and Ports)
 
 ## Project Structure
 
