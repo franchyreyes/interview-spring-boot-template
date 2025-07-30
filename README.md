@@ -10,6 +10,7 @@ This project is a comprehensive Spring Boot application designed to demonstrate 
 - **Spring Boot 3.4.3**: To simplify the setup and development of Spring applications.
 - **Spring Security with JWT**: For securing the application.
 - **Spring Data**: To simplify data access.
+- **Spring Test**: For testing.
 - **OpenAPI 3.0**: For API documentation.
 - **Redis Cache**: For caching.
 - **Spring Cloud**: For building distributed systems.
@@ -20,13 +21,14 @@ This project is a comprehensive Spring Boot application designed to demonstrate 
 - **Log4j**: for debugging purposes.
 
 ## Features
+- Github Actions
 - CRUD operations for Customer, Order, and User.
 - JWT-based authentication.
 - Caching with Redis.
 - API documentation with OpenAPI 3.0.
 - PostgreSQL
 - Spring Profiles
-- DDD architecture (Adapters)
+- DDD architecture (Adapters and Ports)
 
 ## Project Structure
 
@@ -79,7 +81,3 @@ Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
-
-## Contact
-
-franchyreyes@hotmail.com

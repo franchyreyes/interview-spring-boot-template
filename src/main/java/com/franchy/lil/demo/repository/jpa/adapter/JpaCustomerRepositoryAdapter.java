@@ -4,7 +4,7 @@ import com.franchy.lil.demo.domain.Customer;
 import com.franchy.lil.demo.mapper.CustomerMapper;
 import com.franchy.lil.demo.model.CustomerModel;
 import com.franchy.lil.demo.repository.jpa.CustomerRepository;
-import com.franchy.lil.demo.repository.specification.CustomerSpecification;
+import com.franchy.lil.demo.repository.port.CustomerPort;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Repository("jpaCustomerRepositoryAdapter")
 @Profile("prod")
-public class JpaCustomerRepositoryAdapter  implements CustomerSpecification {
+public class JpaCustomerRepositoryAdapter  implements CustomerPort {
 
     private final CustomerRepository customerRepository;
 

@@ -40,8 +40,8 @@ jobs:
       - name: Build project
         run: mvn clean install -DskipTests
 
-      - name: Run tests
-        run: mvn test
+      - name: Run tests with dev profile
+        run: mvn test -Dspring.profiles.active=dev -Dtest=CustomerPortIntegrationDevTest
 
       - name: Shut down services
         run: docker-compose down

@@ -18,9 +18,7 @@ public class CustomerMemory {
             customerMap.put(1, customer);
             customer.setId(1);
         }else if(customer.getId() != null){
-            if(containsKey(customer.getId())) {
                 customerMap.put(customer.getId(), customer);
-            }
         }else{
             int customerID = customerMap.size() + 1;
             customer.setId(customerID);

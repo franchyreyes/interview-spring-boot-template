@@ -5,6 +5,9 @@ logging:
   file:
     name: logs/spring-boot-application-prod.log
 spring:
+  security:
+    web:
+      enabled: true
   datasource:
     hikari:
       minimum-idle: 5
